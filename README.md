@@ -5,5 +5,6 @@ The Aim of this project is to create a fully automated ML model that will be cap
 
 # References :
 This project is inspired form Sentdex's python plays GTA 5 and uses some parts of his code
-His Youtube : https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ
-His Repository : https://github.com/sentdex/pygta5
+
+His Youtube : https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ   
+His Repository : https://github.com/sentdex/pygta5  
