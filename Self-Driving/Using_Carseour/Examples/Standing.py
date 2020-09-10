@@ -1,5 +1,5 @@
 """
-Start Project Cars, run python standing.py while doing a race.
+start Project Cars, run python standing.py while doing a race.
 """
 
 import carseour
