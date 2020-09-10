@@ -1,0 +1,8 @@
+
+Place the .XML file in this directory:
+
+	E:\Games\GRID Autosport\input
+	and/or
+	E:\Games\GRID 2\input
+
+Then use the preset "Direct Input" in the controller options menu

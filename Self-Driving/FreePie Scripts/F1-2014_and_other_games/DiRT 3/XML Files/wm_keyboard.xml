@@ -1,0 +1,286 @@
+<!-- Action map for a default Direct Input device -->
+<!-- Defaults:          deadZone: 0.0f          saturation: 0.8f          threshold: 0.5f -->
+<ActionMap actionMapName="keyboardDefault" deviceName="vJoy Device" priority="0">
+
+   <!-- In Game Actions -->
+  <Action actionName="Accelerate">
+   <Axis axisName="di_y_axis">
+      <CalibratorSimple type="uniDirectionalPositive" deadZone="0.0" saturation="1.0" />
+    </Axis>
+  </Action>
+  <Action actionName="Brake">
+    <Axis axisName="di_z_axis">
+      <CalibratorSimple type="uniDirectionalPositive" deadZone="0.0" saturation="1.0" />
+    </Axis>
+  </Action>
+  <Action actionName="Handbrake">
+    <Axis axisName="di_button_2">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Steer Left">
+    <Axis axisName="di_x_axis">
+      <CalibratorSimple type="biDirectionalLower" deadZone="0.0" saturation="1.0" />
+    </Axis>
+  </Action>
+  <Action actionName="Steer Right">
+    <Axis axisName="di_x_axis">
+      <CalibratorSimple type="biDirectionalUpper" deadZone="0.0" saturation="1.0" />
+    </Axis>
+  </Action>
+  <Action actionName="Change View">
+    <Axis axisName="di_button_4">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Gear Up">
+    <Axis axisName="di_button_0">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Gear Down">
+    <Axis axisName="di_button_1">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Left">
+    <Axis axisName="di_button_8">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Right">
+    <Axis axisName="di_button_9">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Up">
+    <Axis axisName="di_button_10">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Down">
+    <Axis axisName="di_button_11">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Back">
+    <Axis axisName="di_button_3">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Pause">
+    <Axis axisName="di_button_7">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Instant Replay">
+    <Axis axisName="di_button_6">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Horn">
+    <Axis axisName="di_button_5">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+
+  <!-- Menu Actions -->
+  <Action actionName="Menu Left">
+    <Axis axisName="di_button_8">
+        <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Right">
+    <Axis axisName="di_button_9">
+        <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Up">
+    <Axis axisName="di_button_10">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Down">
+    <Axis axisName="di_button_11">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Select">
+    <Axis axisName="di_button_12">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Back">
+    <Axis axisName="di_button_7">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Button3">
+    <Axis axisName="di_button_0">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Button4">
+    <Axis axisName="di_button_1">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Start Button">
+    <Axis axisName="di_button_12">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Left">
+    <Axis axisName="di_button_13">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Right">
+    <Axis axisName="di_button_14">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Up">
+    <Axis axisName="di_button_15">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Down">
+    <Axis axisName="di_button_16">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak In">
+    <Axis axisName="di_button_17">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Out">
+    <Axis axisName="di_button_18">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+
+  <!-- Replay Actions -->
+  <Action actionName="Replay Rewind">
+    <Axis axisName="di_button_13">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Fast Forward">
+    <Axis axisName="di_button_14">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Pause">
+    <Axis axisName="di_button_15">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Next Camera">
+    <Axis axisName="di_button_16">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Prev Camera">
+    <Axis axisName="di_button_17">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Jump In">
+    <Axis axisName="di_button_6">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Exit">
+    <Axis axisName="di_button_7">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay UI On Off">
+    <Axis axisName="di_button_18">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Youtube">
+    <Axis axisName="di_button_29">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Drag Left">
+    <Axis axisName="di_button_30">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Drag Right">
+    <Axis axisName="di_button_31">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Speed Up">
+    <Axis axisName="di_button_32">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Speed Down">
+    <Axis axisName="di_button_33">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Upload">
+    <Axis axisName="di_button_5">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Exit">
+    <Axis axisName="di_button_35">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  
+  
+  <!-- Spectator Actions -->
+  <Action actionName="Spectator Next Camera">
+    <Axis axisName="di_button_16">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Spectator Previous Camera">
+    <Axis axisName="di_button_17">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Spectator UI On Off">
+    <Axis axisName="di_button_18">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Spectator List On Off">
+    <Axis axisName="di_button_5">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Cycle Forward On Board Cameras">
+    <Axis axisName="di_button_4">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Activate Replay System">
+    <Axis axisName="di_button_15">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  
+  <!-- Dev Actions (should be added in code) -->
+  <Action actionName="Temp Left Shoulder">
+    <Axis axisName="di_button_42">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Temp Right Shoulder">
+    <Axis axisName="di_button_43">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+
+</ActionMap>

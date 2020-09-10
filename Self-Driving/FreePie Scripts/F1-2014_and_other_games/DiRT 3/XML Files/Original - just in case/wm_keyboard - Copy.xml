@@ -1,0 +1,310 @@
+<!-- Action map for a default Direct Input device -->
+<!-- Defaults:          deadZone: 0.2f          saturation: 0.8f          threshold: 0.5f -->
+<ActionMap actionMapName="keyboardDefault" deviceName="keyboard" priority="0">
+
+  <!-- In Game Actions -->
+  <Action actionName="Accelerate">
+    <Axis axisName="vk_code_0x26">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x68">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Brake">
+    <Axis axisName="vk_code_0x28">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x62">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Handbrake">
+    <Axis axisName="vk_code_0x51">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Steer Left">
+    <Axis axisName="vk_code_0x25">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x64">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Steer Right">
+    <Axis axisName="vk_code_0x27">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x66">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Change View">
+    <Axis axisName="vk_code_0x43">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Gear Up">
+    <Axis axisName="vk_code_0x53">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Gear Down">
+    <Axis axisName="vk_code_0x41">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Left">
+    <Axis axisName="vk_code_0x2E">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Right">
+    <Axis axisName="vk_code_0x23">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Up">
+    <Axis axisName="vk_code_0x21">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Down">
+    <Axis axisName="vk_code_0x22">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Look Back">
+    <Axis axisName="vk_code_0x57">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Pause">
+    <Axis axisName="vk_code_0x1B">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Instant Replay">
+    <Axis axisName="vk_code_0x70">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Horn">
+    <Axis axisName="vk_code_0x58">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+
+  <!-- Menu Actions -->
+  <Action actionName="Menu Left">
+    <Axis axisName="vk_code_0x25">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x64">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Right">
+    <Axis axisName="vk_code_0x27">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x66">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Up">
+    <Axis axisName="vk_code_0x26">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x68">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Down">
+    <Axis axisName="vk_code_0x28">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+    <Axis axisName="vk_code_0x62">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Select">
+    <Axis axisName="vk_code_0x0D">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Back">
+    <Axis axisName="vk_code_0x1B">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Button3">
+    <Axis axisName="vk_code_0x70">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Button4">
+    <Axis axisName="vk_code_0x71">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Menu Start Button">
+    <Axis axisName="vk_code_0x0D">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Left">
+    <Axis axisName="vk_code_0x41">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Right">
+    <Axis axisName="vk_code_0x44">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Up">
+    <Axis axisName="vk_code_0x57">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Down">
+    <Axis axisName="vk_code_0x53">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak In">
+    <Axis axisName="vk_code_0x45">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Fe View Tweak Out">
+    <Axis axisName="vk_code_0x51">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+
+  <!-- Replay Actions -->
+  <Action actionName="Replay Rewind">
+    <Axis axisName="vk_code_0x71">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Fast Forward">
+    <Axis axisName="vk_code_0x72">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Pause">
+    <Axis axisName="vk_code_0x70">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Next Camera">
+    <Axis axisName="vk_code_0x77">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Prev Camera">
+    <Axis axisName="vk_code_0x76">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Jump In">
+    <Axis axisName="vk_code_0x7B">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Exit">
+    <Axis axisName="vk_code_0x1B">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay UI On Off">
+    <Axis axisName="vk_code_0x78">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Replay Youtube">
+    <Axis axisName="vk_code_0xA0">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Drag Left">
+    <Axis axisName="vk_code_0x76">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Drag Right">
+    <Axis axisName="vk_code_0x77">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Speed Up">
+    <Axis axisName="vk_code_0x26">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Speed Down">
+    <Axis axisName="vk_code_0x28">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Upload">
+    <Axis axisName="vk_code_0x7B">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Youtube Exit">
+    <Axis axisName="vk_code_0x1B">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  
+  
+  <!-- Spectator Actions -->
+  <Action actionName="Spectator Next Camera">
+    <Axis axisName="vk_code_0x77">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Spectator Previous Camera">
+    <Axis axisName="vk_code_0x76">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Spectator UI On Off">
+    <Axis axisName="vk_code_0x70">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Spectator List On Off">
+    <Axis axisName="vk_code_0xA0">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Cycle Forward On Board Cameras">
+    <Axis axisName="vk_code_0x77">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Activate Replay System">
+    <Axis axisName="vk_code_0x76">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  
+  <!-- Dev Actions (should be added in code) -->
+  <Action actionName="Temp Left Shoulder">
+    <Axis axisName="vk_code_0x70">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+  <Action actionName="Temp Right Shoulder">
+    <Axis axisName="vk_code_0x71">
+      <CalibratorSimple type="uniDirectionalPositive" />
+    </Axis>
+  </Action>
+
+</ActionMap>
