@@ -1,10 +1,9 @@
-# Test
+# Using the Same Method as in NXP Competition
 import tensorflow as tf
 from Model import get_model
 import os
 import numpy as np
 import glob
-
 
 # todo Initializing Our Training Model
 model = get_model()

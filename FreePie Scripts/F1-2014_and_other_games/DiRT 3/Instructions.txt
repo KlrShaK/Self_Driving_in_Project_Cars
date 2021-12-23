@@ -1,0 +1,52 @@
+# ==================================================================================================
+# ///////////////////////////////// DiRT 3 Mouse Steering Script ///////////////////////////////////
+# ==================================================================================================
+
+Unlike F1 2014, we preset the controls using the .XML File located in the game folder.
+I already assigned them for you, but if you want to edit it you can use the standard notepad.
+To change the keys for the buttons you edit them in FreePIE.
+
+Steps:
+1.Configure vJoy with at least 20 buttons (See screenshot)
+
+2.Make a backup copy of "wm_keyboard.xml" found here ("E:\Games\DiRT 3\actionmap\")
+
+3.Replace the current "wm_keyboard.xml" with the one provided in the zip file
+
+4.Modify your desired keys in the FreePIE script starting from line 140
+
+5.Set Steering Deadzone and Linearity to 0, but feel free to play around with it
+  To set the default deadzone, edit the XML file
+  e.g.
+  <Action actionName="Steer Left">
+    <Axis axisName="di_x_axis">
+      <CalibratorSimple type="biDirectionalLower" deadZone="0.0" saturation="1.0" />
+    </Axis>
+  </Action>
+
+Optional. To add or change buttons use the .XML file "wm_keyboard"
+          Make sure the buttons assigned in the .XML matches with the buttons in the FreePIE script
+          Input codes that the game uses can be found here ("E:\Games\DiRT 3\gameconfig\input_names.xml")
+
+
+Here are the default keys that I've set:
+
+In-Game Button |Function                    |Mouse/Keyboard
+===========================================================
+Button 1       |Gear up                     |Left Click
+Button 2       |Gear Down                   |Right Click
+Button 3       |E-Brake                     |Left Alt
+Button 4       |Look Back                   |3
+Button 5       |Camera                      |C
+Button 6       |Horn                        |H
+Button 7       |Flashback/Instant Replay    |F
+Button 8       |Pause                       |Esc
+Button 9-12    |Menu Navigation/Camera Look |Arrow Keys
+Button 13      |Menu Select/Start           |Return
+Button 14      |Replay Rewind               |F2
+Button 15      |Replay Fast Forward         |F3
+Button 16      |Replay Pause                |F1
+Button 17      |Replay Next Camera          |F8
+Button 18      |Replay Previous Camera      |F7
+Button 19      |Replay UI On/Off            |F9
+===========================================================

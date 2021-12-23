@@ -1,0 +1,63 @@
+Index: Project_Cars/Train_dataGen.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- Project_Cars/Train_dataGen.py	(date 1596535636712)
++++ Project_Cars/Train_dataGen.py	(date 1596535636712)
+@@ -81,7 +81,9 @@
+     roi_screen = roi(screen, [vertices])
+     roi_screen = np.array(roi_screen[150:500, 10:800])
+     new_screen = cv2.resize(new_screen, (226,100))
++    new_screen = new_screen / 255
+     roi_screen = cv2.resize(roi_screen, (226,100)) #226,100
++    roi_screen = roi_screen / 255
+     return roi_screen, new_screen
+ 
+ # Generating Input for Branch 3 (Telemetry Data)
+@@ -89,17 +91,17 @@
+     telemetry = []
+     telemetry.append(round(game.mSpeed, 1))
+     telemetry.append(round(game.mGear, 1))
+-    telemetry.append(round(game.mSteering, 3))
+-    telemetry.append(round(game.mThrottle, 3))
++    telemetry.append(round(game.mSteering, 4))
++    telemetry.append(round(game.mThrottle, 4))
+     # the Following code might look very inefficient but its the
+     # best I could while keeping it all simple.(Due to the fact that the outputs are not float rather ctypes.c_float)
+     # Any suggestions is welcome
+     for i in range(4):
+-        telemetry.append(round(game.mTyreSlipSpeed[i], 3))
++        telemetry.append(round(game.mTyreSlipSpeed[i], 4))
+     for i in range(4):
+-        telemetry.append(round(game.mTyreGrip[i], 3))
++        telemetry.append(round(game.mTyreGrip[i], 4))
+     for i in range(4):
+-        telemetry.append(round(game.mTerrain[i], 3))
++        telemetry.append(float(game.mTerrain[i]))
+ 
+     telemetry = np.array(telemetry)
+     return telemetry
+@@ -141,7 +143,7 @@
+             #     break
+ 
+             # todo convert into a list of 10 frames
+-            if len(frame_list) < 20:
++            if len(frame_list) < 16:
+                 frame_list.append(roi_screen)
+                 print(len(frame_list))
+                 continue
+@@ -157,11 +159,12 @@
+             #     break
+             training_data.append(np.array([final_seq_frames, processed_img, telemetry_data, user_input]) )
+ 
++            print(len(training_data))
+             if len(training_data) % 1000 == 0:
+                 np.save(train_path, training_data)
+                 file_count += 1
++                print(len(training_data))
+                 training_data = []
+-                print(len(training_data))
+ 
+             # print('Frame Per Seconds: {}'.format(1 / (time.time() - last_time)))
+ 

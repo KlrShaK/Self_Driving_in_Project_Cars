@@ -7,8 +7,8 @@ from tensorflow.keras.models import Model
 
 def get_model():
     # Defining inputs
-    raw_img_input = Input(shape=(16,100,226,3), name='Input_Branch-1') # inputs = Input(shape = (frames, IMG_SIZE, IMG_SIZE, 3)) # frames=20
-    process_img_input = Input(shape=(100,226,3), name='Input_Branch-2')
+    raw_img_input = Input(shape=(15, 100, 226, 3), name='Input_Branch-1') # inputs = Input(shape = (frames, IMG_SIZE, IMG_SIZE, 3)) # frames=20
+    process_img_input = Input(shape=(100, 226, 1), name='Input_Branch-2')
     telemetry_data_input = Input(shape=(16,), name='Input_Branch-3')
 
 

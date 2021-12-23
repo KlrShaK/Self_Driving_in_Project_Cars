@@ -1,3 +1,5 @@
+# todo follow a similar to traning as in NXP aim India
+
 from screen_grab import grab_screen
 import time
 import cv2
@@ -9,11 +11,9 @@ import carseour
 # todo Initialising training location
 training_dir = r'F:\PycharmProjects\Self_Driving\Training_Data'
 
-
 # todo Initialising and Getting the Data from Shared memory of the Game (Project Cars)
 # Will produce an error if the code is run and the game is not working in the background
 game = carseour.live()
-
 
 # todo Initializing PyGame and Joystick
 pygame.init()
@@ -22,7 +22,7 @@ _joystick = pygame.joystick.Joystick(0)
 _joystick.init()
 
 
-# Extracting Area of Intrest from the Image
+# Extracting Area of Interest from the Image
 def roi(img, vertices):
     mask = np.zeros_like(img, dtype=np.uint8)
     cv2.fillPoly(mask, vertices, (255,)*4)
@@ -122,6 +122,7 @@ if __name__ == '__main__':
     file_count = 0
     frame_list = []
     Pause = False
+
     while True:
         while not Pause:
             # Name of file in which data is saved
@@ -142,24 +143,7 @@ if __name__ == '__main__':
             #     cv2.destroyAllWindows()
             #     break
 
-            # todo convert into a list of 10 frames
-            if len(frame_list) < 16:
-                frame_list.append(roi_screen)
-                print(len(frame_list))
-                continue
-            else:
-                frame_list.pop(0)
-                frame_list.append(roi_screen)
-                flag = True
-
-            final_seq_frames = np.array(frame_list)
-            #view
-            # cv2.imshow('window2', roi_screen)
-            # if cv2.waitKey(25) & 0xFF == ord('q'):
-            #     cv2.destroyAllWindows()
-            #     break
-            #view
-            training_data.append(np.array([final_seq_frames, processed_img, telemetry_data, user_input]) )
+            training_data.append(np.array([roi_screen, processed_img, telemetry_data, user_input]))
 
             if len(training_data) % 1000 == 0:
                 np.save(train_path, training_data)
