@@ -1,4 +1,4 @@
-# Using the Same Method as in NXP Competition
+#todo  Using the Same Method as in NXP Competition
 import tensorflow as tf
 from Model import get_model
 import os
