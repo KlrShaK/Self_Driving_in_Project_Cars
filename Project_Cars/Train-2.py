@@ -1,73 +1,95 @@
-#todo  Using the Same Method as in NXP Competition
+# todo  Using the Same Method as in NXP Competition
+
 import tensorflow as tf
 from Model import get_model
 import os
 import numpy as np
 import glob
-
-# todo Initializing Our Training Model
-model = get_model()
-model.summary()
-
+from random import shuffle
 
 # todo Initialising training Data location
 training_dir = r'F:\PycharmProjects\Self_Driving\Training_Data'
 # training_dir = os.fsencode(training_dir)
 train_list = glob.glob(r'F:\PycharmProjects\Self_Driving\Training_Data\training_data_*.npy')
-train_list[:] = [file[46:] for file in train_list]
+print(train_list)
+width = 100
+height = 226
+look_ahead = 15
 
 
-def data_generator(train_list, batch_size):
-
-    i = 0
-    j = 0
-    flag = True
-    while True:
-        # inputs = []
-        # outputs = []
-        if i < len(train_list):
-            if flag == True:
-                train_path = os.path.join(str(training_dir), str(train_list[i]))
-                data = np.load(train_path, allow_pickle=True)
-                flag = False
-
-            if j >= len(data):
-                j = 0
-                i += 1
-                flag = True
-                del data
-
-            else:
-                if len(data[j:]) >= batch_size:
-                    input_1 = data[j:(j+batch_size), 1] #0
-                    input_2 = data[j:(j+batch_size), 1]
-                    input_3 = data[j:(j + batch_size), 2]
-                    outputs= data[j:(j+batch_size), -1]
-                    j += (batch_size)
-                    yield {'Input_Branch-1' : input_1,'Input_Branch-2': input_2, 'Input_Branch-3': input_3}, outputs
-
-                elif len(data[j:])< batch_size:
-                    input_1 = data[j:, 0]
-                    input_2 = data[j:, 1]
-                    input_3 = data[j:, 2]
-                    outputs= data[j:, -1]
-                    j = 0
-                    i += 1
-                    flag = True
-                    del data
-                    yield {'Input_Branch-1': input_1, 'Input_Branch-2': input_2, 'Input_Branch-3': input_3}, outputs
-
-        else:
-            i = 0
-            del data
-            flag = True
-            np.random.shuffle(train_list)
+def get_train_data(npData, start_point):
+    X1 = np.array([npData[start_point - i: i][0] for i in range(start_point, len(npData))]).reshape(-1, 15, width,
+                                                                                                    height, 3)
+    X2 = np.array([npData[i][1] for i in range(start_point, len(npData))]).reshape(-1, width, height, 1)
+    X3 = np.array([npData[i][2] for i in range(start_point, len(npData))]).reshape(-1, 16)
+    Y = np.array([npData[i][-1] for i in range(start_point, len(npData))]).reshape(-1, 2)
+    return X1, X2, X3, Y
 
 
-batch_size = 5
-# dataset = tf.data.Dataset.from_generator(data_generator, args= [train_list, batch_size],
-#                                          output_types = ({'Input_Branch-1': tf.uint8, 'Input_Branch-2': tf.uint8, 'Input_Branch-3': tf.float32}, tf.float32),)
+def train_model(EPOCHS=40):
+    epoch_count = 0
+    verbose_flag = -1  # Verbose = 1 only for one new epoch else verbose = 0
+    loss_hist = []
+    val_loss_hist = []
 
-dataset = data_generator(train_list, batch_size)
-model.compile(optimizer='adam', loss='mse', metrics=['mae'])
-model.fit(dataset, epochs=1, steps_per_epoch=200)
+    print("************Starting Training**********")
+    print("********EPOCH-{}**********".format(0))
+    for e in range(EPOCHS):
+        data_order = [i for i in range(0, len(train_list))]
+        shuffle(data_order)
+
+        for i in data_order:
+            file_name = r'F:\PycharmProjects\Self_Driving\Training_Data\training_data_{}.npy'.format(i)
+            train_data = np.load(file_name, allow_pickle=True)
+            # print('training_data_{}.npy'.format(i), len(train_data))
+
+            # splitting b/w training and testing data
+            test_split = 0.1
+            train_len = int(len(train_data) * (1 - test_split))
+            train = train_data[:train_len]
+            test = train_data[train_len:]
+
+            # Getting data in correct Form
+            start_point = look_ahead
+            X1, X2, X3, Y = get_train_data(train, start_point)
+            TX1, TX2, TX3, TY = get_train_data(test, start_point=(start_point + train_len))
+
+            # Fitting Model
+            # todo Add Verbose Silencing if not on epoch
+            history = model.fit(x={'Input_Branch-1': X1, 'Input_Branch-2': X2, 'Input_Branch-3': X3}, y={'targets': Y},
+                                epochs=1, validation_data=(
+                    {'Input_Branch-1': TX1, 'Input_Branch-2': TX2, 'Input_Branch-3': TX3}, {'targets': TY}))
+            val_loss_hist.append(history.history['val_loss'][0])
+            loss_hist.append(history.history['loss'][0])
+
+            del train_data
+
+        # todo implement early stopping
+        if epoch_count % 1 == 0 and epoch_count != 0:
+            print('SAVING MODEL!')
+            model.save('Training_Data/weights/Weights_{}'.format(epoch_count))
+            val_loss_hist_np = np.array(val_loss_hist)
+            loss_hist_np = np.array(loss_hist)
+            np.save("Training_Data/weights/val_loss.npy", val_loss_hist_np)
+            np.save("Training_Data/weights/loss_hist.npy", loss_hist_np)
+            del val_loss_hist_np
+            del loss_hist_np
+
+        if epoch_count % len(train_list) == 0 and epoch_count != 0:
+            epoch_count += 1
+            print("********EPOCH-{}**********".format(epoch_count))
+
+
+if __name__ == '__main__':
+    input_shape = (216, 216, 3)
+    pool_size = (2, 2)
+    # todo Initializing Our Training Model
+    model = get_model()
+    model.summary()
+    try:
+        # Transfer Learning
+        model = tf.keras.models.load_model("weights/Weights_6-old")
+        print("************************Model Weights LOADED*****************")
+    except:
+        print("Prev model not available")
+    train_model(40)

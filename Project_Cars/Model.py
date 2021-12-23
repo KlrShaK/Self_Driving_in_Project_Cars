@@ -59,15 +59,17 @@ def get_model():
     combined = concatenate([branch_1.output, branch_2.output, branch_3.output],  name='Combine_Branches')
 
     # Final Dense Layers on Combined Outputs
-    combined_branch = Dense(300, activation= 'tanh', name='Dense__4-1')(combined)
-    combined_branch = Dropout(0.5, name= 'Drop__4-1')(combined_branch)
-    combined_branch = Dense(100, activation= 'tanh', name='Dense__4-2')(combined_branch)
-    combined_branch = Dense(50, activation= 'tanh', name='Dense__4-3')(combined_branch)
-    combined_branch = Dense(2, activation= 'tanh', name='Final_Predictions')(combined_branch)
+    combined_branch = Dense(300, activation='tanh', name='Dense__4-1')(combined)
+    combined_branch = Dropout(0.5, name='Drop__4-1')(combined_branch)
+    combined_branch = Dense(100, activation='tanh', name='Dense__4-2')(combined_branch)
+    combined_branch = Dense(50, activation='tanh', name='Dense__4-3')(combined_branch)
+    combined_branch = Dense(2, activation='tanh', name='Final_Predictions')(combined_branch)
 
     # our model will accept the inputs of the three branches and
     # then output a 2 value  for throttle and steering
-    model = Model(inputs=[branch_1.input, branch_2.input, branch_3.input], outputs= combined_branch)
+    model = Model(inputs=[branch_1.input, branch_2.input, branch_3.input], outputs=combined_branch)
+
+    model.compile(optimizer='adam', loss='mse', metrics=['mae'])
 
     return model
 
