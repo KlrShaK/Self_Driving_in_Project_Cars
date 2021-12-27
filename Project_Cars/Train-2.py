@@ -8,9 +8,12 @@ import glob
 from random import shuffle
 
 # todo Initialising training Data location
-training_dir = r'F:\PycharmProjects\Self_Driving\Training_Data'
+training_dir = r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data'
 # training_dir = os.fsencode(training_dir)
-train_list = glob.glob(r'F:\PycharmProjects\Self_Driving\Training_Data\training_data_*.npy')
+train_list = glob.glob(r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data\training_data_*.npy')
+if train_list == []:
+    print("***************No Training Files found***************")
+    exit()
 print(train_list)
 width = 100
 height = 226
@@ -38,8 +41,9 @@ def train_model(EPOCHS=40):
         data_order = [i for i in range(0, len(train_list))]
         shuffle(data_order)
 
+
         for i in data_order:
-            file_name = r'F:\PycharmProjects\Self_Driving\Training_Data\training_data_{}.npy'.format(i)
+            file_name = r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data\training_data_{}.npy'.format(i)
             train_data = np.load(file_name, allow_pickle=True)
             # print('training_data_{}.npy'.format(i), len(train_data))
 
@@ -58,7 +62,7 @@ def train_model(EPOCHS=40):
             # todo Add Verbose Silencing if not on epoch
             history = model.fit(x={'Input_Branch-1': X1, 'Input_Branch-2': X2, 'Input_Branch-3': X3}, y={'targets': Y},
                                 epochs=1, validation_data=(
-                    {'Input_Branch-1': TX1, 'Input_Branch-2': TX2, 'Input_Branch-3': TX3}, {'targets': TY}))
+                    {'Input_Branch-1': TX1, 'Input_Branch-2': TX2, 'Input_Branch-3': TX3}, {'targets': TY}), verbose=1)
             val_loss_hist.append(history.history['val_loss'][0])
             loss_hist.append(history.history['loss'][0])
 
@@ -85,7 +89,8 @@ if __name__ == '__main__':
     pool_size = (2, 2)
     # todo Initializing Our Training Model
     model = get_model()
-    model.summary()
+    # TO print Model Summary
+    # model.summary()
     try:
         # Transfer Learning
         model = tf.keras.models.load_model("weights/Weights_6-old")

@@ -43,9 +43,8 @@ def replay_data():
             X1, X2, X3, Y = get_data(data_elem)
             show_imgs(X1, X2)
             telemetry = X3
-            print(X3)
-            print(Y)
-            # sys.stdout.flush()
+            print("Telemetry: {}".format(X3))
+            print("\nSteering and Acceleration : {}".format(Y))
     print("**********END OF AVAILABLE DATA************")
 
 

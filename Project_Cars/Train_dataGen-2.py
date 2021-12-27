@@ -9,7 +9,7 @@ import pygame
 import carseour
 
 # todo Initialising training location
-training_dir = r'F:\PycharmProjects\Self_Driving\Training_Data'
+training_dir = r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data'
 
 # todo Initialising and Getting the Data from Shared memory of the Game (Project Cars)
 # Will produce an error if the code is run and the game is not working in the background
@@ -111,9 +111,19 @@ def get_user_input():
     user_input = []
     pygame.event.get()
     user_input.append(round(game.mSteering, 3))
-    user_input.append(round(_joystick.get_axis(1) , 3))
-
+    # todo use axis 4(brake -1 to 1) and 5(accelerator -1 to 1)
+    brakes = 0
+    accelerator = 0
+    if _joystick.get_axis(4) > -0.95:
+        brk_temp = round(_joystick.get_axis(4), 3) + 1
+        brakes = brk_temp / 2
+        user_input.append(brakes)
+    else:
+        acc_temp = round(_joystick.get_axis(5), 3) + 1
+        accelerator = acc_temp / 2
+        user_input.append(accelerator)
     user_input = np.array(user_input)
+
     return user_input
 
 if __name__ == '__main__':
@@ -126,8 +136,8 @@ if __name__ == '__main__':
     while True:
         while not Pause:
             # Name of file in which data is saved
-            file_name = r'training_data_{}.npy'.format(file_count)
-            train_path = os.path.join(training_dir, file_name)
+            file_name = r'\training_data_{}.npy'.format(file_count)
+            train_path = training_dir + file_name
 
             flag = False
             last_time = time.time()
