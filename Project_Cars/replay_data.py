@@ -7,7 +7,7 @@ import sys
 import cv2
 from random import shuffle
 
-# todo Initialising training Data location
+# Initialising training Data location
 training_dir = r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data'
 # training_dir = os.fsencode(training_dir)
 train_list = glob.glob(r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data\training_data_*.npy')
@@ -50,8 +50,6 @@ def replay_data():
 
 
 def show_imgs(X1, X2):
-    # todo show the captured screen at the heavy expense of loss of framerate
-    # suggest to keep this commented (use for debugging purpose only)
     cv2.imshow('window', X1)
     cv2.imshow('window2', X2)
     if cv2.waitKey(25) & 0xFF == ord('q'):
