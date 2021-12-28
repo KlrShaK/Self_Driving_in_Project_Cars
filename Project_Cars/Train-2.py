@@ -7,7 +7,7 @@ import numpy as np
 import glob
 from random import shuffle
 
-# todo Initialising training Data location
+# Initialising training Data location
 training_dir = r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data'
 # training_dir = os.fsencode(training_dir)
 train_list = glob.glob(r'F:\PyCharm Projects\Self_Driving_in_Project_Cars\Training_Data\training_data_*.npy')
@@ -20,12 +20,30 @@ height = 226
 look_ahead = 15
 
 
+def give_seqImgs(data, start_point, size=15):
+    temp_imgs = data[:, 0]
+    temp_x1 = np.array([data[(i - start_point): i, 0] for i in range(start_point, len(data))])
+    print(np.shape(temp_x1[884]))
+    # np.save("test-temp_imgs", temp_imgs)
+    temp_x1 = np.reshape(temp_x1, (-1, 15, width, height, 3))
+    seqImgs = np.empty([])
+    # for count in range(len(temp_imgs)):
+    #     np.append(seqImgs, [temp_imgs[count:count+15,]])
+    # print(np.shape(temp_imgs[0]))
+    raise NameError("SUP")
+    return seqImgs
+
+
 def get_train_data(npData, start_point):
-    X1 = np.array([npData[start_point - i: i][0] for i in range(start_point, len(npData))]).reshape(-1, 15, width,
-                                                                                                    height, 3)
-    X2 = np.array([npData[i][1] for i in range(start_point, len(npData))]).reshape(-1, width, height, 1)
-    X3 = np.array([npData[i][2] for i in range(start_point, len(npData))]).reshape(-1, 16)
-    Y = np.array([npData[i][-1] for i in range(start_point, len(npData))]).reshape(-1, 2)
+    # todo Debug X1. X2,X3,Y working fine
+    # temp_x1 = [npData[start_point - i: i,0] for i in range(start_point, len(npData))]
+    # print(np.shape(temp_x1[0]))
+    # X1 = np.array([npData[start_point - i: i,0] for i in range(start_point, len(npData))]).reshape(-1, 15, width,
+    #                                                                                                 height, 3)
+    X1 = np.array(give_seqImgs(npData, start_point))
+    X2 = np.array([npData[i, 1] for i in range(start_point, len(npData))]).reshape(-1, width, height, 1)
+    X3 = np.array([npData[i, 2] for i in range(start_point, len(npData))]).reshape(-1, 16)
+    Y = np.array([npData[i, 3] for i in range(start_point, len(npData))]).reshape(-1, 2)
     return X1, X2, X3, Y
 
 
@@ -68,7 +86,7 @@ def train_model(EPOCHS=40):
 
             del train_data
 
-        # todo implement early stopping
+        # implement early stopping
         if epoch_count % 1 == 0 and epoch_count != 0:
             print('SAVING MODEL!')
             model.save('Training_Data/weights/Weights_{}'.format(epoch_count))
@@ -87,7 +105,7 @@ def train_model(EPOCHS=40):
 if __name__ == '__main__':
     input_shape = (216, 216, 3)
     pool_size = (2, 2)
-    # todo Initializing Our Training Model
+    # Initializing Our Training Model
     model = get_model()
     # TO print Model Summary
     # model.summary()
