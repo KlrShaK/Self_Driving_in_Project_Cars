@@ -19,27 +19,17 @@ width = 100
 height = 226
 look_ahead = 15
 
-
 def give_seqImgs(data, start_point, size=15):
-    temp_imgs = data[:, 0]
-    temp_x1 = np.array([data[(i - start_point): i, 0] for i in range(start_point, len(data))])
-    print(np.shape(temp_x1[884]))
-    # np.save("test-temp_imgs", temp_imgs)
+    new_data = np.zeros((900, 100, 226, 3), dtype=int)
+    new_data[0] = data[0][0]
+    for i in range(len(data)):
+        new_data[i] = data[i][0]
+    temp_x1 = np.asarray([new_data[(i - start_point): i] for i in range(start_point, len(data))], dtype=int)
     temp_x1 = np.reshape(temp_x1, (-1, 15, width, height, 3))
-    seqImgs = np.empty([])
-    # for count in range(len(temp_imgs)):
-    #     np.append(seqImgs, [temp_imgs[count:count+15,]])
-    # print(np.shape(temp_imgs[0]))
-    raise NameError("SUP")
-    return seqImgs
+    return temp_x1
 
 
 def get_train_data(npData, start_point):
-    # todo Debug X1. X2,X3,Y working fine
-    # temp_x1 = [npData[start_point - i: i,0] for i in range(start_point, len(npData))]
-    # print(np.shape(temp_x1[0]))
-    # X1 = np.array([npData[start_point - i: i,0] for i in range(start_point, len(npData))]).reshape(-1, 15, width,
-    #                                                                                                 height, 3)
     X1 = np.array(give_seqImgs(npData, start_point))
     X2 = np.array([npData[i, 1] for i in range(start_point, len(npData))]).reshape(-1, width, height, 1)
     X3 = np.array([npData[i, 2] for i in range(start_point, len(npData))]).reshape(-1, 16)
@@ -78,7 +68,8 @@ def train_model(EPOCHS=40):
 
             # Fitting Model
             # todo Add Verbose Silencing if not on epoch
-            history = model.fit(x={'Input_Branch-1': X1, 'Input_Branch-2': X2, 'Input_Branch-3': X3}, y={'targets': Y},
+            history = model.fit(x={'Input_Branch-1': X1, 'Input_Branch-2': X2, 'Input_Branch-3': X3},
+                                y={'Final_Predictions': Y},
                                 epochs=1, validation_data=(
                     {'Input_Branch-1': TX1, 'Input_Branch-2': TX2, 'Input_Branch-3': TX3}, {'targets': TY}), verbose=1)
             val_loss_hist.append(history.history['val_loss'][0])
